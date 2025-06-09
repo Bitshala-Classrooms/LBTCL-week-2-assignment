@@ -50,6 +50,9 @@ Implement the following tasks in exactly one of the language-specific directorie
 10. Sign and broadcast the new Parent transaction.
 11. Get the replaced `Parent` transaction details and output them to a file named `parent-rbf.json`.
 
+> **Note:** To connect to bitcoin core rpc, via various language specific clients, use the following credentials
+> username: alice
+> password: password
 
 ### Output Format
 
@@ -78,7 +81,7 @@ Implement the following tasks in exactly one of the language-specific directorie
 ### Prerequisites
 
 | Language       | Prerequisite packages       |
-| -------------- |-----------------------------|
+| -------------- | --------------------------- |
 | **Bash**       | `jq`, `curl`, `wget`, `tar` |
 | **JavaScript** | Node.js ≥ 20, `npm`         |
 | **Python**     | Python ≥ 3.9                |
@@ -101,6 +104,8 @@ It's a good idea to run the whole test locally to ensure your code is working pr
 - Grant execution permission to [test.sh](./test.sh), by running `chmod +x ./test.sh`.
 - Execute `./test.sh`.
 - The test script will run your script and verify the output. If the test script passes, you have successfully completed the challenge and are ready to submit your solution.
+
+> **Note:** There is a pre-cooked setup script available [here](./setup-bitcoin-node.sh) to download and start bitcoind. You may use that script for all local testing purposes. 
 
 ### Common Issues
 - Your submission should not stop the Bitcoin Core daemon at any point.
