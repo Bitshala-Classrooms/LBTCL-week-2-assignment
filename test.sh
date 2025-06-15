@@ -1,13 +1,13 @@
 # Setup nvm and install pre-req
-if ! grep -q "# /bin/bash ./javascript/run-javascript.sh" run.sh; then
-  if command -v node > /dev/null 2>&1; then
-    echo "Node.js is already installed. Current version: $(node -v)"
-  else
-    curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
-    source $HOME/.nvm/nvm.sh
-    nvm install --lts
-  fi
-elif ! grep -q "# /bin/bash ./rust/run-rust.sh" run.sh; then
+if command -v node > /dev/null 2>&1; then
+  echo "Node.js is already installed. Current version: $(node -v)"
+else
+  curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
+  source $HOME/.nvm/nvm.sh
+  nvm install --lts
+fi
+
+if ! grep -q "# /bin/bash ./rust/run-rust.sh" run.sh; then
   if command -v cargo > /dev/null 2>&1; then
     echo "Cargo is already installed. Current version: $(cargo --version)"
   else
@@ -17,6 +17,10 @@ elif ! grep -q "# /bin/bash ./rust/run-rust.sh" run.sh; then
 else
   echo "No specific language setup required."
 fi
+
+npm install # Install Node.js dependencies
+
+set -e  # Exit immediately if any command fails
 
 # Start the setup script and give access to all runners
 chmod +x setup-bitcoin-node.sh
